@@ -35,7 +35,11 @@ func request(id domain.UserID) (*ApiResponse, error) {
 	client := &http.Client{Timeout: 5 * time.Second}
 
 	// Requestの生成
-	req, err := http.NewRequest("GET", "https://jsonplaceholder.typicode.com/users/"+string(id), nil)
+	req, err := http.NewRequest(
+		"GET",
+		fmt.Sprintf("https://jsonplaceholder.typicode.com/users/%d", id),
+		nil,
+	)
 	if err != nil {
 		fmt.Println("Error occurred while creating HTTP request:", err)
 		return nil, err
@@ -72,6 +76,9 @@ func request(id domain.UserID) (*ApiResponse, error) {
 // mapToDomainObject
 // APIのResponseをDomainオブジェクトにマッピングする
 func mapToDomainObject(apiResponse *ApiResponse) *domain.User {
+	if apiResponse == nil {
+		return nil
+	}
 	return &domain.User{
 		ID:       domain.UserID(apiResponse.ID),
 		Name:     apiResponse.Name,

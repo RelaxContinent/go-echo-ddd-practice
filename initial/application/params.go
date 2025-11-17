@@ -1,5 +1,5 @@
 package application
 
 type InitialParams struct {
-	UserID string
+	UserID int
 }

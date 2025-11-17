@@ -1,3 +1,3 @@
 package domain
 
-type UserID string
+type UserID int

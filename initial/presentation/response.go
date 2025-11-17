@@ -1,6 +1,10 @@
 package presentation
 
-import "github.com/RelaxContinent/go-echo-ddd-practice/initial/application"
+import (
+	"strconv"
+
+	"github.com/RelaxContinent/go-echo-ddd-practice/initial/application"
+)
 
 type InitialResponse struct {
 	Message string `json:"message"`
@@ -11,7 +15,7 @@ type InitialResponse struct {
 func NewInitialResponse(result *application.InitialResult) *InitialResponse {
 	message :=
 		"User Info: " +
-			"ID=" + string(result.User.ID) +
+			"ID=" + strconv.Itoa(int(result.User.ID)) +
 			", Name=" + result.User.Name +
 			", UserName=" + result.User.UserName +
 			", Email=" + result.User.Email +

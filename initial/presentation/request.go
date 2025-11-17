@@ -3,7 +3,7 @@ package presentation
 import "github.com/RelaxContinent/go-echo-ddd-practice/initial/application"
 
 type InitialRequest struct {
-	UserID string `query:"user_id" validate:"required,numeric,min=1,max=10"`
+	UserID int `query:"user_id" validate:"required,numeric,min=1,max=10"`
 }
 
 // ToApplicationParams
